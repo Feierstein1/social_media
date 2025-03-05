@@ -10,6 +10,14 @@
       "StackName": "amplify-socialmedia-dev-d5108",
       "StackId": "arn:aws:cloudformation:us-east-1:209479293794:stack/amplify-socialmedia-dev-d5108/a6592380-f9f8-11ef-8e7e-12fd54c25463",
       "AmplifyAppId": "d2u9n58ro4s9w"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2u9n58ro4s9w",
+          "type": "manual"
+        }
+      }
     }
   }
 }
