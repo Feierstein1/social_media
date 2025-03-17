@@ -4,7 +4,7 @@ import User from "../../lib/models/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
 

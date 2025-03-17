@@ -5,8 +5,8 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('authToken'); 
   const { pathname } = request.nextUrl;
-  console.log('Middleware running for path:', pathname);
-  console.log('Token found:', token);
+  //console.log('Middleware running for path:', pathname);
+  //console.log('Token found:', token);
 
   if ((pathname === '/' || pathname.startsWith('/auth')) && !token) {
     return NextResponse.redirect(new URL('/unauth/login', request.url));

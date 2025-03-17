@@ -1,28 +1,31 @@
-"use client";
+"use client"
 
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Logout from '../../../components/Logout/Logout'
 
 export default function Dashboard() {
-  const router = useRouter();
+  const [user, setUser] = useState(null);
 
-  const handleLogout = async () => {
-    try {
-      const response = await fetch('/api/logout', { method: 'POST' });
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const response = await fetch('/api/parseJWT');
+      const data = await response.json();
+      setUser(data);
+    };
 
-      if (response.ok) {
-        router.push('/unauth/login');
-      } else {
-        console.error('Logout failed:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
-  };
+    fetchUserData();
+  }, []);
+
+  if (!user) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>
       <h1>Dashboard</h1>
-      <button onClick={handleLogout}>Logout</button>
+      <p>Welcome, {user.username}!</p>
+      <p>Email: {user.email}</p>
+      <p><Logout/></p>
     </div>
   );
 }
